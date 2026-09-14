@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cita? 💖</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesheet/style.css">
 </head>
 <body>
 
-    <section id="p1">
+    <!-- PASO 0: Crear la invitación -->
+    <section id="p0">
+        <div class="card">
+            <h2>Crear Invitación 💌</h2>
+            <p class="desc">Ingresa tu número de WhatsApp para recibir la respuesta cuando acepten:</p>
+            <input type="tel" id="miNumero" placeholder="Ej: 34600000000 (con prefijo de país)">
+            <button class="btn-next" onclick="generarEnlace()">Generar Mi Enlace ✨</button>
+            
+            <div id="contenedorEnlace" class="hidden">
+                <p class="subtext">¡Copia y envía este enlace a tu cita!</p>
+                <input type="text" id="enlaceGenerado" readonly>
+                <button class="btn-next btn-ws" onclick="copiarEnlace()">Copiar Enlace 📋</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PASO 1: Recibir la invitación -->
+    <section id="p1" class="hidden">
         <h1>¿Te apetece una cita? 💌</h1>
         <button id="btnYes" onclick="next(1)">¡SÍ, CLARO! 😍</button>
         <button id="btnNo">no</button>
     </section>
 
+    <!-- PASO 2: Elegir fecha y hora -->
     <section id="p2" class="hidden">
         <div class="card">
             <h2>¿Cuándo? 📅</h2>
@@ -23,6 +41,7 @@
         </div>
     </section>
 
+    <!-- PASO 3: Elegir el plan -->
     <section id="p3" class="hidden">
         <div class="card">
             <h2>¿Qué hacemos? 🍿</h2>
@@ -34,14 +53,24 @@
                 <option value="Caza de Peluches 🧸">Caza de Peluches 🧸</option>
                 <option value="Ir al gimnasio 🤸">Ir al gimnasio 🤸</option>
             </select>
-            <button class="btn-next" onclick="next(3)">Confirmar ✨</button>
+            <button class="btn-next" onclick="next(3)">Siguiente ➡️</button>
         </div>
     </section>
 
+    <!-- PASO 4: Elegir el lugar -->
     <section id="p4" class="hidden">
         <div class="card">
+            <h2>¿Dónde quedamos? 📍</h2>
+            <input type="text" id="lugar" placeholder="Ej: Centro comercial, Parque central, Mi casa...">
+            <button class="btn-next" onclick="next(4)">Confirmar ✨</button>
+        </div>
+    </section>
+
+    <!-- PASO 5: Confirmación final -->
+    <section id="p5" class="hidden">
+        <div class="card">
             <h1>¡OKKKKKK! 🥳</h1>
-            <p>Envía la confirmación a quien te invitó:</p>
+            <p>Envía la confirmación por WhatsApp:</p>
             <button onclick="enviarWhatsApp()" class="btn-next btn-ws">
                 Enviar por WhatsApp 📲
             </button>

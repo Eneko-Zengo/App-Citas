@@ -86,7 +86,7 @@ input, select {
     color: white;
     width: 100%;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 1.2rem;
 }
 
@@ -109,7 +109,13 @@ input, select {
 }
 
 .subtext {
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 0.9rem;
     color: #64748b;
+}
+
+.desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 15px;
 }
