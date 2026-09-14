@@ -1,18 +1,21 @@
-// Detectar si la URL incluye el número de teléfono
+// Detectar si la URL incluye el parámetro de teléfono al cargar
 const urlParams = new URLSearchParams(window.location.search);
 const numeroDestino = urlParams.get('phone');
 
+// Si hay un número en la URL, mostrar la invitación directamente
 if (numeroDestino) {
     document.getElementById('p0').classList.add('hidden');
     document.getElementById('p1').classList.remove('hidden');
 }
 
-// Establecer fecha mínima
+// Fecha mínima
 document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
 
-// Lógica para que el creador genere su enlace personalizado
+// Generar el enlace con el número limpio
 function generarEnlace() {
-    const numeroInput = document.getElementById('miNumero').value.trim();
+    let numeroInput = document.getElementById('miNumero').value.trim();
+    numeroInput = numeroInput.replace(/\D/g, '');
+
     if (!numeroInput) {
         alert('Por favor ingresa tu número con código de país.');
         return;
@@ -25,11 +28,17 @@ function generarEnlace() {
     document.getElementById('contenedorEnlace').classList.remove('hidden');
 }
 
-function copiarEnlace() {
+// Copiar enlace al portapapeles
+async function copiarEnlace() {
     const inputEnlace = document.getElementById('enlaceGenerado');
-    inputEnlace.select();
-    document.execCommand('copy');
-    alert('¡Enlace copiado! Ahora envíaselo a la persona que quieres invitar.');
+    try {
+        await navigator.clipboard.writeText(inputEnlace.value);
+        alert('¡Enlace copiado! Envíaselo a la persona que quieres invitar.');
+    } catch (err) {
+        inputEnlace.select();
+        document.execCommand('copy');
+        alert('¡Enlace copiado!');
+    }
 }
 
 // Lógica del botón "NO"
@@ -49,7 +58,7 @@ btnNo.onclick = () => {
     window.close();
 };
 
-// Navegación entre pasos
+// Navegación de la interfaz
 function next(currentStep) {
     if (currentStep === 2) {
         const fechaVal = document.getElementById('fecha').value;
@@ -62,7 +71,7 @@ function next(currentStep) {
     if (currentStep === 4) {
         const lugarVal = document.getElementById('lugar').value.trim();
         if (!lugarVal) {
-            alert('¡Escribe o indica un sitio para quedar!');
+            alert('¡Escribe un sitio para quedar!');
             return;
         }
         generarEnlacesCalendario();
@@ -72,23 +81,24 @@ function next(currentStep) {
     document.getElementById(`p${currentStep + 1}`).classList.remove('hidden');
 }
 
-// Enviar el resultado a WhatsApp
+// Abrir WhatsApp con la respuesta
 function enviarWhatsApp() {
     if (!numeroDestino) {
         alert('Número de destino no encontrado.');
         return;
     }
 
+    const numeroLimpio = numeroDestino.replace(/\D/g, '');
     const fecha = document.getElementById('fecha').value;
     const hora = document.getElementById('hora').value;
     const plan = document.getElementById('plan').value;
     const lugar = document.getElementById('lugar').value;
 
     const mensaje = `¡Hola! Acepto la cita 💖%0A📅 *Fecha:* ${fecha}%0A⏰ *Hora:* ${hora}%0A🍿 *Plan:* ${plan}%0A📍 *Lugar:* ${lugar}`;
-    window.open(`https://wa.me/${numeroDestino}?text=${mensaje}`, '_blank');
+    window.open(`https://wa.me/${numeroLimpio}?text=${mensaje}`, '_blank');
 }
 
-// Enlace a Google Calendar
+// Generar enlace para Google Calendar
 function generarEnlacesCalendario() {
     const fechaInput = document.getElementById('fecha').value;
     const horaInput = document.getElementById('hora').value;

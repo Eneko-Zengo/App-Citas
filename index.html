@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cita? 💖</title>
-    <link rel="stylesheet" href="stylesheet/styles.css"
+    <link rel="stylesheet" href="stylesheet/styles.css">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
         <div class="card">
             <h2>Crear Invitación 💌</h2>
             <p class="desc">Ingresa tu número de WhatsApp para recibir la respuesta cuando acepten:</p>
-            <input type="tel" id="miNumero" placeholder="Ej: 34600000000 (con prefijo de país)">
+            <input type="tel" id="miNumero" placeholder="Ej: 34600000000">
             <button class="btn-next" onclick="generarEnlace()">Generar Mi Enlace ✨</button>
             
             <div id="contenedorEnlace" class="hidden">
@@ -52,6 +52,10 @@
                 <option value="Shopping 👗">Compra de Ropa 👗</option>
                 <option value="Caza de Peluches 🧸">Caza de Peluches 🧸</option>
                 <option value="Ir al gimnasio 🤸">Ir al gimnasio 🤸</option>
+                <option value="Ir a la playa 🏖️">Ir a la playa 🏖️</option>
+                <option value="Ir a la montaña 🏔️">Ir a la montaña 🏔️</option>
+                <option value="Peli y Manta 🛋️">Peli y Manta 🛋️</option>
+                
             </select>
             <button class="btn-next" onclick="next(3)">Siguiente ➡️</button>
         </div>
@@ -61,7 +65,7 @@
     <section id="p4" class="hidden">
         <div class="card">
             <h2>¿Dónde quedamos? 📍</h2>
-            <input type="text" id="lugar" placeholder="Ej: Centro comercial, Parque central, Mi casa...">
+            <input type="text" id="lugar" placeholder="Ej: Centro comercial, Parque central...">
             <button class="btn-next" onclick="next(4)">Confirmar ✨</button>
         </div>
     </section>
