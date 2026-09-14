@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cita? 💖</title>
-    <link rel="stylesheet" href="stylesheet/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -31,20 +31,22 @@
                 <option value="Café y Paseo ☕">Un cafecito y caminar ☕</option>
                 <option value="Cine y Palomitas 🎬">Ver una peli 🎬</option>
                 <option value="Shopping 👗">Compra de Ropa 👗</option>
-                <option value="Peluches 🧸">Caza de Peluches 🧸</option>
-                <option value="Shopping 🤸">Ir al gimnasio🤸</option>
-                <option value="Shopping 🤸">Ir al gimnasio🤸</option>
+                <option value="Caza de Peluches 🧸">Caza de Peluches 🧸</option>
+                <option value="Ir al gimnasio 🤸">Ir al gimnasio 🤸</option>
             </select>
             <button class="btn-next" onclick="next(3)">Confirmar ✨</button>
         </div>
     </section>
 
-    <section id="p5" class="hidden">
+    <section id="p4" class="hidden">
         <div class="card">
             <h1>¡OKKKKKK! 🥳</h1>
-            <p>Añádelo a tu calendario:</p>
+            <p>Envía la confirmación a quien te invitó:</p>
+            <button onclick="enviarWhatsApp()" class="btn-next btn-ws">
+                Enviar por WhatsApp 📲
+            </button>
+            <p class="subtext">O agrégalo a tu calendario:</p>
             <a id="go" class="cal-btn btn-google" target="_blank">Google Calendar</a>
-            <a id="ap" class="cal-btn btn-apple" target="_blank">Apple Calendar</a>
         </div>
     </section>
 

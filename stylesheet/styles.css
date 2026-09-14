@@ -50,7 +50,6 @@ button {
     transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Botón SÍ gigante */
 #btnYes {
     background-color: var(--primary);
     color: white;
@@ -64,7 +63,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Botón NO que se mueve */
 #btnNo {
     background-color: #cbd5e1;
     color: #64748b;
@@ -73,7 +71,6 @@ button {
     position: absolute;
 }
 
-/* Formularios y Botones de Avance */
 input, select {
     width: 100%;
     padding: 15px;
@@ -93,7 +90,10 @@ input, select {
     font-size: 1.2rem;
 }
 
-/* Enlaces de Calendario */
+.btn-ws {
+    background-color: #25D366;
+}
+
 .cal-btn {
     display: block;
     padding: 15px;
@@ -108,6 +108,8 @@ input, select {
     background-color: #4285f4;
 }
 
-.btn-apple {
-    background-color: #000000;
+.subtext {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #64748b;
 }

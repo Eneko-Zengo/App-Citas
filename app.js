@@ -1,7 +1,7 @@
 // Establecer fecha mínima para no elegir días pasados
 document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
 
-// Lógica del botón invasivo "NO"
+// Lógica del botón "NO"
 const btnNo = document.getElementById('btnNo');
 
 const moverBoton = () => {
@@ -21,7 +21,6 @@ btnNo.onclick = () => {
 
 // Navegación entre páginas
 function next(currentStep) {
-    // Validar fecha en el paso 2
     if (currentStep === 2) {
         const fechaVal = document.getElementById('fecha').value;
         if (!fechaVal) {
@@ -38,7 +37,25 @@ function next(currentStep) {
     }
 }
 
-// Generación de links para Google y Apple Calendar
+// Obtener el número de WhatsApp desde el enlace (ej: tudominio.com/?phone=34600000000)
+const urlParams = new URLSearchParams(window.location.search);
+const numeroDestino = urlParams.get('phone');
+
+function enviarWhatsApp() {
+    if (!numeroDestino) {
+        alert('Falta el número de teléfono en el enlace. Añade ?phone=NUMERO al final de la URL.');
+        return;
+    }
+
+    const fecha = document.getElementById('fecha').value;
+    const hora = document.getElementById('hora').value;
+    const plan = document.getElementById('plan').value;
+
+    const mensaje = `¡Hola! Acepto la cita 💖%0A📅 *Fecha:* ${fecha}%0A⏰ *Hora:* ${hora}%0A🍿 *Plan:* ${plan}`;
+    window.open(`https://wa.me/${numeroDestino}?text=${mensaje}`, '_blank');
+}
+
+// Enlace de Google Calendar
 function generarEnlacesCalendario() {
     const fechaInput = document.getElementById('fecha').value;
     const horaInput = document.getElementById('hora').value;
@@ -53,5 +70,4 @@ function generarEnlacesCalendario() {
     const linkGoogle = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${tituloPlan}&dates=${fechaISO}/${fechaISO}`;
 
     document.getElementById('go').href = linkGoogle;
-    document.getElementById('ap').href = linkGoogle;
 }
