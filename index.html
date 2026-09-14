@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cita? 💖</title>
+    <link rel="stylesheet" href="stylesheet/styles.css">
+</head>
+<body>
+
+    <section id="p1">
+        <h1>¿Te apetece una cita? 💌</h1>
+        <button id="btnYes" onclick="next(1)">¡SÍ, CLARO! 😍</button>
+        <button id="btnNo">no</button>
+    </section>
+
+    <section id="p2" class="hidden">
+        <div class="card">
+            <h2>¿Cuándo? 📅</h2>
+            <input type="date" id="fecha">
+            <input type="time" id="hora" value="20:00">
+            <button class="btn-next" onclick="next(2)">Siguiente ➡️</button>
+        </div>
+    </section>
+
+    <section id="p3" class="hidden">
+        <div class="card">
+            <h2>¿Qué hacemos? 🍿</h2>
+            <select id="plan">
+                <option value="Comida Romántica 🍕">Ir a comer algo rico 🍕</option>
+                <option value="Café y Paseo ☕">Un cafecito y caminar ☕</option>
+                <option value="Cine y Palomitas 🎬">Ver una peli 🎬</option>
+                <option value="Shopping 👗">Compra de Ropa 👗</option>
+                <option value="Peluches 🧸">Caza de Peluches 🧸</option>
+                <option value="Shopping 🤸">Ir al gimnasio🤸</option>
+                <option value="Shopping 🤸">Ir al gimnasio🤸</option>
+            </select>
+            <button class="btn-next" onclick="next(3)">Confirmar ✨</button>
+        </div>
+    </section>
+
+    <section id="p5" class="hidden">
+        <div class="card">
+            <h1>¡OKKKKKK! 🥳</h1>
+            <p>Añádelo a tu calendario:</p>
+            <a id="go" class="cal-btn btn-google" target="_blank">Google Calendar</a>
+            <a id="ap" class="cal-btn btn-apple" target="_blank">Apple Calendar</a>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
